@@ -8,7 +8,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 //var users = require('./routes/users');
 // REST API사용한 url기반 DB 접근
-var rest = require('./routes/rest');
+var song = require('./routes/song');
+var user = require('./routes/user');
 
 var busboy = require('connect-busboy');
 
@@ -28,7 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 //app.use('/users', users);
-app.use('/rest', rest);
+app.use('/song', song);
+app.use('/user', user);
 app.use(busboy());
 
 // File receive 모듈
