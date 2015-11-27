@@ -39,13 +39,19 @@ module.exports = function(app) {
 	});
  
 	app.get('/uploads/:file', function (req, res){
-        	file = req.params.file;
-        	//var dirname = "/workspace/museek-server";
-        	var dirname = ".";
-		var mp3File = fs.readFileSync(dirname + "/uploads/" + file);
-        	res.writeHead(200, {'Content-Type': 'audio/mp3', "Content-Length": mp3File.length});
-		res.end(mp3File, 'binary');
-		//var fileurl = dirname + '/uploads/' + file;
-		//res.download(fileurl);
+    	file = req.params.file;
+    	var dirname = ".";
+		// var mp3File = fs.readFileSync(dirname + "/uploads/" + file);
+  //   	res.writeHead(200, {'Content-Type': 'audio/mp3', "Content-Length": mp3File.length});
+		// res.end(mp3File, 'binary');
+		var stat = fs.statSync(dirname + "/uploads/" + file);
+		res.writeHead(200, {
+			'Content-Type': 'audio/mpeg',
+			'Content-Length': stat.size
+		});
+
+		var readStream = fs.createReadStream(dirname + "/uploads/" + file);
+		readStream.pipe(res);
+		
 	});
 };

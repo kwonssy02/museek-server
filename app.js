@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 // REST API사용한 url기반 DB 접근
 var song = require('./routes/song');
 var user = require('./routes/user');
+var post = require('./routes/post');
 
 var busboy = require('connect-busboy');
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 //app.use('/users', users);
+app.use('/post', post);
 app.use('/song', song);
 app.use('/user', user);
 app.use(busboy());

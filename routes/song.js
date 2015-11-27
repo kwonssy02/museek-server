@@ -18,7 +18,7 @@ const selectSongsQuery = ("SELECT songId, fileSize, duration, title, singer, reg
  * output : songId, fileSize, duration, title, singer, regiDate
  */
 const searchSongsByTitleURL = ("/searchSongsByTitle/:title");
-const searchSongsByTitleQuery = ("SELECT songId, fileSize, duration, title, singer, regiDate FROM Song WHERE title LIKE CONCAT('%', ?, '%');");
+const searchSongsByTitleQuery = ("SELECT songId, fileSize, duration, title, singer, regiDate FROM Song WHERE UPPER(title) LIKE CONCAT('%', UPPER(?), '%');");
 
 /**
  * singer로 노래 검색 
@@ -26,7 +26,7 @@ const searchSongsByTitleQuery = ("SELECT songId, fileSize, duration, title, sing
  * output : songId, fileSize, duration, title, singer, regiDate
  */
 const searchSongsBySingerURL = ("/searchSongsBySinger/:singer");
-const searchSongsBySingerQuery = ("SELECT songId, fileSize, duration, title, singer, regiDate FROM Song WHERE singer LIKE CONCAT('%', ?, '%');");
+const searchSongsBySingerQuery = ("SELECT songId, fileSize, duration, title, singer, regiDate FROM Song WHERE UPPER(singer) LIKE CONCAT('%', UPPER(?), '%');");
 
 router.get(selectSongsURL, selectSongs);
 function selectSongs(req, res, next) {

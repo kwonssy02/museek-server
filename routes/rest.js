@@ -9,6 +9,7 @@ require('./dbconnection')();
  * input  : 없음
  * output : id, password, name, groupkey
  */
+ /*
 const selectSongsURL = ("/songs");
 const selectSongsQuery = ("SELECT * FROM Song;");
 
@@ -21,7 +22,7 @@ function selectSongs(req, res, next) {
                 jsonFormat.successRes(res, 'selectSongs', rows);
         });
 }
-
+*/
 router.post('/', function(req, res) {
 	res.send();
 });
