@@ -11,6 +11,7 @@ var routes = require('./routes/index');
 var song = require('./routes/song');
 var user = require('./routes/user');
 var post = require('./routes/post');
+var playlist = require('./routes/playlist');
 
 var busboy = require('connect-busboy');
 
@@ -33,6 +34,7 @@ app.use('/', routes);
 app.use('/post', post);
 app.use('/song', song);
 app.use('/user', user);
+app.use('/playlist', playlist);
 app.use(busboy());
 
 // File receive 모듈
