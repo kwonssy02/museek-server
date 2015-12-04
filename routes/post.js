@@ -10,7 +10,7 @@ require('./dbconnection')();
  * output : postId, userId, playlistId, content, regiDate, playlistName
  */
 const selectPostsURL = ("/selectPosts/:userId");
-const selectPostsQuery = ("SELECT B.postId postId, B.userId userId, B.playlistId playlistId, B.content content, B.regiDate regiDate, C.name playlistName \
+const selectPostsQuery = ("SELECT B.postId postId, B.userId userId, B.playlistId playlistId, B.content content, date_format(B.regiDate, '%Y년 %m월 %d일') regiDate, C.name playlistName \
                         FROM Follow A INNER JOIN Post B         \
                         ON A.followId = B.userId                \
                         INNER JOIN Playlist C                   \
